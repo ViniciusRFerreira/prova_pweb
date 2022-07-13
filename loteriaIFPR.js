@@ -5,58 +5,46 @@ let outNumero3 = document.getElementById("outNumero3");
 let outNumero4 = document.getElementById("outNumero4");
 let outNumero5 = document.getElementById("outNumero5");
 let outNumero6 = document.getElementById("outNumero6");
+let outSort = document.getElementById("outSort");
+let outAlert = document.getElementById("outAlert")
 
 lista = []
 
-let i = 1;
-let num1, num2, num3, num4, num5, num6;
+let num, i = 1;
 
 frm.addEventListener("click", () => {
   
-  if (i == 1){
-    num1 = Math.floor(Math.random() * 60);
-    console.log(num1);
-    outNumero1.innerText = num1
-  }
-  if (i == 2){
-    num2 = Math.floor(Math.random() * 60);
-    console.log(num2);
-    if (num1 != num2){
-      outNumero2.innerText = num2
-    }
-    
-  }
-  if (i == 3){
-    num3 = Math.floor(Math.random() * 60);
-    console.log(num3);
-    if (num1 != num2 != num3){
-      outNumero3.innerText = num3
-    }
-  }
-  if (i == 4){
-    num4 = Math.floor(Math.random() * 60);
-    console.log(num4);
-    if (num1 != num2 != num3 != num4){
-      outNumero4.innerText = num4
-    }
-  }
-  if (i == 5){
-    num5 = Math.floor(Math.random() * 60);
-    console.log(num5);
-    if (num1 != num2 != num3 != num4 != num5){
-      outNumero5.innerText = num5
-    }
-  }
-  if (i == 6){
-    num6 = Math.floor(Math.random() * 60);
-    console.log(num6);
-    if (num1 != num2 != num3 != num4 != num5 != num6){
-      outNumero6.innerText = num6
-    }
-  }
+    if (i == 1){
+      num = Math.floor(Math.random() * 60+1);
+    console.log(num);
+    lista.push(num);
 
-  i = i+1
-  
+    }
+    if (i > 1){
+    num = Math.floor(Math.random() * 60+1);
+    console.log(num);
+
+    if (lista.includes(num)){
+      a = "Número ja sorteado, sortear novamente"
+      outAlert.textContent = a
+      i = i - 1
+      console.log('rep '+ num);
+    }else{
+      a = ""
+      outAlert.textContent = a
+      lista.push(num)
+    }
+    }
+    outNumero1.textContent = lista[0]
+    outNumero2.textContent = lista[1]
+    outNumero3.textContent = lista[2]
+    outNumero4.textContent = lista[3]
+    outNumero5.textContent = lista[4]
+    outNumero6.textContent = lista[5]
+    if (i == 6){
+      outSort.textContent = "As seis dezenas foram sorteadas!"
+    }
+  i = i +1
 });
 
 frm.btNovo.addEventListener('click', () => {
